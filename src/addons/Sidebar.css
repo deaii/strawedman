@@ -1,0 +1,80 @@
+:root {
+  --side-bar-width: 280px;
+  --side-bar-stowed-width: calc(var(--button-size) + 6px);
+  --side-bar-diff: calc(-1 * (var(--side-bar-width) - var(--side-bar-stowed-width)));
+  --hidden-transform: translate(var(--side-bar-diff, 0));
+}
+
+.sm-sidebar {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: var(--side-bar-width);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transition: left .2s ease-in;
+  border-right: var(--modal-border);
+
+  background-color: white;
+  transition: transform 0.5s, height 0.5s;
+}
+
+.sm-sidebar .header {
+  height: var(--modal-header-height);
+  color: var(--modal-header-color);
+  background-color: var(--modal-header-bg-color);
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.sm-sidebar .title {
+  float: left;
+  left: 0;
+  font-size: var(--modal-header-font-size);
+  margin-left: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+  width: 8em;
+
+  transition: width 0.5s, margin 0.5s;
+}
+
+.sm-sidebar.stowed {
+  height: var(--modal-header-height);
+  transform: var(--hidden-transform);
+}
+
+.icon-svg {
+  stroke: white;
+  fill: white;
+  width: 32px;
+  height: 32px;
+}
+
+.sm-sidebar.stowed .title {
+  width: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.sm-sidebar.stowed .body, .sm-sidebar.stowed .body * {
+  display: none;
+}
+
+.sm-sidebar .body {
+  top: var(--modal-header-height);
+  padding-top: 2px;
+  text-align: center;
+  overflow-x: hidden;
+  width: var(--side-bar-width);
+}
+
+.toggle {
+  float: right;
+}
+
+.toggle .stowed {
+  float: left;
+}
