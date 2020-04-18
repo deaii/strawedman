@@ -1,5 +1,4 @@
 
-
 export interface StoryRendererProps {
   src: string;
   onClick: (href: string) => void;

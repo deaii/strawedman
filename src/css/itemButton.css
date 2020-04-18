@@ -1,0 +1,34 @@
+
+:root {
+  --item-button-size: 60px;
+  --item-selected-border-color: gray;
+  --item-badge-color: white;
+  --item-badge-bg-color: dimgrey;
+}
+
+.sm-item-button {
+  border-radius: 4px;
+  height: var(--item-button-size);
+  width: var(--item-button-size);
+  background-size: 100% 100%;
+  border: 2px solid transparent;
+  padding: 0px;
+}
+
+.sm-item-badge {
+  color: var(--item-badge-color);
+  background-color: var(--item-badge-bg-color);
+  display: block;
+  float: right;
+  margin-top: calc(var(--item-button-size) / 2);
+  padding: 2px 4px;
+  border-radius: 50%;
+}
+
+.sm-item-button:focus {
+  border: 2px dashed var(--item-selected-border-color);
+}
+
+.sm-item-button:hover {
+  border: 2px solid var(--item-selected-border-color);
+}

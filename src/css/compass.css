@@ -1,0 +1,106 @@
+
+.sm-compass {
+  padding: 5px;
+  border: var(--modal-border);
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  border-radius: 5px;
+}
+
+.sm-compass-vertical {
+  width: calc((3 * var(--button-size)) + 8px);
+  grid-template-areas: 
+    "he he he he he he"
+    "nw nw n n ne ne"
+    "w  w  . . e  e"
+    "sw sw s s se se"
+    ".  .  . . .  ."
+    ". up up in in ."
+    ". dn dn out out ."
+}
+
+.sm-compass-horizontal {
+  width: calc((5 * var(--button-size)) + 12px);
+
+  grid-template-areas: 
+    "he he he he he"
+    "nw n  ne .  ."
+    "nw n  ne up in"
+    "w  .  e  up in"
+    "w  .  e  dn out"
+    "sw s  se dn out"
+    "sw s  se .  ."
+}
+
+.sm-compass-header {
+  grid-area: he;
+  text-align: center;
+  border-bottom: 1px solid dimgray;
+  color: var(--modal-header-color);
+  background-color: var(--modal-header-bg-color);
+  font-size: var(--modal-header-font-size);
+  margin-bottom: 5px;
+}
+
+.sm-compass .btn {
+  width: var(--button-size);
+  padding: 1px;
+  margin: 1px;
+}
+
+.sm-compass .n {
+  grid-area: n;
+}
+
+.sm-compass .ne {
+  grid-area: ne;
+}
+
+.sm-compass .e {
+  grid-area: e;
+}
+
+.sm-compass .se {
+  grid-area: se;
+}
+
+.sm-compass .s {
+  grid-area: s;
+}
+
+.sm-compass .sw {
+  grid-area: sw;
+}
+
+.sm-compass .w {
+  grid-area: w;
+}
+
+.sm-compass .nw {
+  grid-area: nw;
+}
+
+.sm-compass .up {
+  grid-area: up;
+}
+
+.sm-compass .dn {
+  grid-area: dn;
+}
+
+.sm-compass .in {
+  grid-area: in;
+}
+
+.sm-compass-vertical .up {
+  margin-top: 5px;
+}
+
+.sm-compass-vertical .in {
+  margin-top: 5px;
+}
+
+.sm-compass .out {
+  grid-area: out;
+}

@@ -1,0 +1,69 @@
+/************
+ * Modal
+ ************/
+ 
+ :root {
+   --modal-header-color: white;
+   --modal-header-bg-color: #444;
+   --modal-border: 1px solid dimgrey;
+   --modal-header-height: 40px;
+   --modal-header-font-size: 18px;
+ }
+ 
+ .sm-modal {
+  background-color: white;
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+  padding: 4px;
+  border-radius: 2px;
+  box-shadow: grey 0 0 2px 2px;
+  min-width: 250px;
+}
+
+.sm-modal-header {
+  height: var(--modal-header-height);
+  color: var(--modal-header-color);
+  background-color: var(--modal-header-bg-color);
+  border-radius: 2px;
+
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.sm-modal-title {
+  float: left;
+  font-size: var(--modal-header-font-size);
+  margin-left: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.sm-modal-x {
+  float: right;
+}
+
+.sm-modal-Body {
+  border: var(--modal-border);
+  margin-top: 5px;
+  border-radius: 2px;
+  padding: 5px;
+  max-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sm-modal-Separator {
+  width: 100%;
+  align-self: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: 1px solid lightgrey;
+}
+
+.sm-modal-buttons {
+  text-align: right;
+  padding-top: 10px;
+}

@@ -1,0 +1,9 @@
+src/serviceWorker.ts
+src/setupTests.ts
+src/**/*.stories.ts
+src/**/*.stories.tsx
+node_modules/*
+.storybook/*
+public/*
+build/*
+config/*

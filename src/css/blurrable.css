@@ -1,0 +1,9 @@
+.blurred, .blurred * {
+  pointer-events: none;
+}
+
+.not-blurred, .not-blurred * {
+  pointer-events: all !important;
+  opacity: 1.0 !important;
+  z-index: 999 !important;
+}

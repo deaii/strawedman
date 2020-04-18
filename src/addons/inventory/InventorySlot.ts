@@ -1,5 +1,5 @@
 
-export interface InventorySlot {
+export default interface InventorySlot {
   id: string;
   count: number;
 }

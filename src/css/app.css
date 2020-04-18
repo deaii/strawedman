@@ -1,0 +1,67 @@
+:root {
+  --background-color: lightgrey;
+  --body-bg-color: grey;
+  --button-bg-color-disabled: #404040;
+  --button-bg-color-hover: #202040;
+  --button-bg-color: #101020;
+  --button-border-color: #707090;
+  --button-color-disabled: #A0A0A0;
+  --button-color-hover: white;
+  --button-color: white;
+  --button-size: 32px;
+  --header-bg-color-hover: #404050;
+  --header-bg-color: #303050;
+}
+
+body {
+  background-color: var(--body-bg-color);
+  font-family: Sans-Serif;
+  font-size: 16px;
+}
+
+.sm-header, .sm-output, .sm-inventory, .sm-footer {
+  background-color: var(--background-color);
+  width: 70em;
+  max-width: calc(100vw - 124px);
+  padding: 1em;
+  margin: 0 auto;
+}
+
+a, .btn {
+  cursor: pointer;
+  display: inline-block;
+  height: var(--button-size);
+  min-width: var(--button-size);
+  margin: 3px;
+  padding: 6px;
+  background:var(--button-bg-color);
+  border: 1px solid var(--button-border-color);
+  border-radius: 2px;
+  color: var(--button-color);
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+a {
+  padding-bottom: 8px;
+  padding-top: 7px;
+  height: 25px;
+}
+
+a:hover, .btn:hover {
+  background: var(--button-bg-color-hover);
+  color: var(--button-color-hover); 
+}
+
+a:disabled, .btn:disabled {
+  color: var(--button-color-disabled);
+  background-color: var(--button-bg-color-disabled);
+  border: none;
+  cursor: default;
+}
+
+a:focus, .btn:focus {
+  border-style: dashed;
+  border-width: 2px;
+}

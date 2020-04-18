@@ -1,0 +1,28 @@
+
+.save-slots {
+  overflow-y: scroll;
+  height: auto;
+  width: 270px;
+  min-height: 50px;
+}
+
+.save-slot {
+  width: 240px;
+}
+
+.save-slot .name {
+  display: block;
+  float: left;
+}
+
+.save-slot .date {
+  display: block;
+  float: right;
+}
+
+.modal-save-slot {
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 5px;
+}

@@ -1,0 +1,39 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": ["airbnb-typescript"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+      // With Typescript, cyclical dependencies, at least for type definitions,
+      // are inevitable.
+      //
+      "import/no-cycle": "off",
+
+      // We won't be exporting the UI itself for raw JS use, and our own props 
+      // validation is done via TypeScript for now.
+      //
+      "react/prop-types": "off",
+      
+      // Between Markdown and our custom processing, dangerous innerHTML is kind
+      // of inevitable.
+      "react/no-danger": "off",
+
+      // Between Markdown, EJS, and some of our extensions, allowing 'eval'
+      // statements will be necessary.
+      "@typescript-eslint/no-implied-eval": "off",
+
+      // Conflicts with prettierrc
+      "operator-linebreak": "off",
+
+      // Not entirely accurate, nor needed: violations will result in build breaks anyway.
+      "import/no-unresolved": "off",
+
+      // Conflicts with Typescript <reference>
+      "spaced-comment": "off",
+      "object-curly-newline": "off"
+  }
+}

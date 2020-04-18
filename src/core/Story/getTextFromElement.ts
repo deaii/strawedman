@@ -1,9 +1,9 @@
 
 export default function getTextFromElement(dataEl: HTMLElement, tagName: string): string[] {
-  let rVal: string[] = [];
+  const rVal: string[] = [];
 
-  let styles = dataEl.getElementsByTagName(tagName);
-  for (let j = 0; j < styles.length; j++){
+  const styles = dataEl.getElementsByTagName(tagName);
+  for (let j = 0; j < styles.length; j += 1) {
     rVal.push(styles.item(j)!.innerHTML);
   }
 

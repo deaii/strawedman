@@ -1,5 +1,6 @@
-import { Passage } from './Passage';
-export interface CompressedStoryData {
+import Passage from './Passage';
+
+export default interface CompressedStoryData {
   name: string;
   startPassage: number;
   creator: string;
@@ -7,4 +8,6 @@ export interface CompressedStoryData {
   passages: {
     [id: number]: Passage;
   };
+  scripts: string[];
+  styles: string[];
 }

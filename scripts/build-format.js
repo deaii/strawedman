@@ -65,15 +65,15 @@ async function doIt() {
     throw new Error("Not all files found.")
   }
 
-  var distPath = 'dist/' + pkg.name.toLowerCase() + '-' + pkg.version;
+  var distPath = 'dist/' + pkg.version;
 
-  var htmlTemplate = ejs.compile(await fs.readFile(`${__dirname}/../src/index.ejs`, encoding));
+  var htmlTemplate = ejs.compile(await fs.readFile(`${__dirname}/../public/index.ejs`, encoding));
 
 	var formatData = {
 		author: pkg.author.replace(/ <.*>/, ''),
 		description: pkg.description,
 		image: 'icon.svg',
-		name: pkg.name,
+		name: 'strawman',
 		proofing: false,
 		source: htmlTemplate({
 			style: await cssContent,
@@ -89,7 +89,9 @@ async function doIt() {
 	await fs.writeFile(
     path.join(distPath, 'format.js'),
 		'window.storyFormat(' + JSON.stringify(formatData) + ');'
-	);
+  );
+  
+  await fs.copyFile(`${__dirname}/../public/icon.svg`, path.join(distPath, 'icon.svg'));
 }
 
 doIt()
