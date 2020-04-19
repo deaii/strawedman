@@ -104,3 +104,8 @@
 .sm-compass .out {
   grid-area: out;
 }
+
+.sm-exits {
+  display: flex;
+  flex-wrap: wrap;
+}

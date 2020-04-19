@@ -6,12 +6,13 @@ import StoryData from './StoryData';
 import Story from './Story';
 import State from './State';
 import EngineComponent from './EngineComponent';
+import Passage from './Passage';
 
 export default class Engine {
   /**
    * The DOM element on which the engine's UI will be rendered.
    */
-  private renderElement: HTMLElement;
+  #renderElement: HTMLElement;
 
   #story?: Story;
 
@@ -30,13 +31,13 @@ export default class Engine {
   /**
    * All passages in the story, indexed by name instead of ID.
    */
-  private passageIdsByName: {[name: string]: number} = {};
+  #passageIdsByName: {[name: string]: number} = {};
 
   /**
    * All Passage IDs, in numerical order.  Useful for enumerating
    * passages for scripts and addons
    */
-  private sortedPassageIds: number[] = [];
+  #sortedPassageIds: number[] = [];
 
   #error?: string;
 
@@ -50,7 +51,7 @@ export default class Engine {
     story?: Story,
     parentElement?: React.FC<{}>,
   ) {
-    this.renderElement = renderElement;
+    this.#renderElement = renderElement;
     this.#story = story;
     this.#processor = processor;
     this.#parentElement = parentElement;
@@ -76,7 +77,7 @@ export default class Engine {
    * @function start
    * @param {Element} el - Element to show content in
    * @returns {void}
-   * */
+   ***/
   async start(): Promise<void> {
     this.data = {
       state: this.setInitialData ? this.setInitialData() : {},
@@ -86,23 +87,23 @@ export default class Engine {
     const { passages } = this.story;
 
     /* Index passages, removing undefined or null passages in the process just in case */
-    this.sortedPassageIds = Object.keys(passages)
+    this.#sortedPassageIds = Object.keys(passages)
       .map((i: string) => parseInt(i, 10))
       .filter((i) => passages[i])
       .sort();
 
-    this.passageIdsByName = {};
+    this.#passageIdsByName = {};
 
-    this.sortedPassageIds.forEach((i: number) => {
+    this.#sortedPassageIds.forEach((i: number) => {
       const psg = passages[i]!;
       if (psg) {
-        this.passageIdsByName[psg.name] = i;
+        this.#passageIdsByName[psg.name] = i;
       }
     });
 
     window.events.storyStarted.trigger(this.story);
 
-    this.sortedPassageIds.forEach((i: number) => {
+    this.#sortedPassageIds.forEach((i: number) => {
       window.events.passageSetup.trigger(passages[i]);
     });
 
@@ -131,6 +132,11 @@ export default class Engine {
   }
 
   async show(passageName: string, nonce?: number, state?: State) {
+    const passage = this.story.passages[passageName];
+    return this.showRaw(passage, nonce, state);
+  }
+
+  async showRaw(passage: Passage, nonce?: number, state?: State) {
     if (!this.story.finishedLoading) {
       this.story.finishLoading();
     }
@@ -140,7 +146,6 @@ export default class Engine {
     }
 
     const newState = { ...(state || this.data.state) };
-    const passage = this.story.passages[passageName];
     const newNonce = isNullOrUndefined(nonce) ? ((this.data.nonce || 0) + 1) : nonce;
 
     window.events.passageProcessing.trigger({ passage, nonce: newNonce, state: newState });
@@ -151,7 +156,7 @@ export default class Engine {
 
     this.data = {
       state: newState,
-      passageName,
+      passageName: passage.name,
       passage,
       text,
       nonce: newNonce,
@@ -204,17 +209,17 @@ export default class Engine {
     if (this.#error) {
       ReactDOM.render(
         <div className="error">{this.#error}</div>,
-        this.renderElement,
+        this.#renderElement,
       );
     } else if (this.#parentElement) {
       ReactDOM.render(
         React.createElement(this.#parentElement, {}, ...elms),
-        this.renderElement,
+        this.#renderElement,
       );
     } else {
       ReactDOM.render(
         <>{elms}</>,
-        this.renderElement,
+        this.#renderElement,
       );
     }
   }

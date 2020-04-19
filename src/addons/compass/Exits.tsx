@@ -23,7 +23,7 @@ function HandleExits(elm: Element) {
   });
 
   ReactDOM.render(
-    <div>
+    <div className="sm-exits">
       <div
         className="exits-left"
         dangerouslySetInnerHTML={{ __html: innerText }}
